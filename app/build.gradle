@@ -28,7 +28,10 @@ dependencies {
     compile "com.android.support:design:${versions.support}"
     compile "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+
     compile "com.google.android.gms:play-services-gcm:${versions.gcm}"
+    compile "com.google.firebase:firebase-auth:${versions.gcm}"
+    compile "com.google.firebase:firebase-database:${versions.gcm}"
     compile "com.google.firebase:firebase-config:${versions.gcm}"
     testCompile "junit:junit:${versions.junit}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

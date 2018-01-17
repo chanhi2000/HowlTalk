@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.view.Window
 import android.view.WindowManager
 import android.widget.LinearLayout
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -22,9 +21,6 @@ class SplashActivity: AppCompatActivity() {
         // remove status bar
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
-
-
-
 
         val configSetting = FirebaseRemoteConfigSettings.Builder()
                 .setDeveloperModeEnabled(BuildConfig.DEBUG)
@@ -45,7 +41,7 @@ class SplashActivity: AppCompatActivity() {
     }
 
     private fun displayMessage() {
-        val splashBackground:String = mFirebaseRemoteConfig.getString("splash_background")
+        val splashBackground:String = mFirebaseRemoteConfig.getString(getString(R.string.rc_color))
         val caps:Boolean = mFirebaseRemoteConfig.getBoolean("splash_message_caps")
         val splashMessage:String = mFirebaseRemoteConfig.getString("splash_message")
 
@@ -59,11 +55,9 @@ class SplashActivity: AppCompatActivity() {
                     finish()
                 })
                 create()
-            }
-            builder.show()
+            }.show()
         } else {
-            startActivity(Intent(this, LoginActivity::class.java))
-
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
         }
     }
 }
