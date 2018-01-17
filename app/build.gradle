@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+    defaultConfig {
+        applicationId "com.example.markiiimark.howltalk"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.target
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${versions.espresso}",
+            {  exclude group: 'com.android.support', module: 'support-annotations'  })
+    compile "com.android.support:appcompat-v7:${versions.support}"
+    compile "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    compile "com.google.android.gms:play-services-gcm:${versions.gcm}"
+    compile "com.google.firebase:firebase-config:${versions.gcm}"
+    testCompile "junit:junit:${versions.junit}"
+}
+
+apply plugin: 'com.google.gms.google-services'
