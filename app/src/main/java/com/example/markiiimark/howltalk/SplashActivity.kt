@@ -1,22 +1,30 @@
 package com.example.markiiimark.howltalk
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.view.Window
+import android.view.WindowManager
 import android.widget.LinearLayout
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 
 class SplashActivity: AppCompatActivity() {
 
-    private var mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+    private val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
     private val splashLayout by lazy {  findViewById(R.id.SplashLayout) as LinearLayout  }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // remove status bar
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
+
+
+
 
         val configSetting = FirebaseRemoteConfigSettings.Builder()
                 .setDeveloperModeEnabled(BuildConfig.DEBUG)
@@ -53,6 +61,9 @@ class SplashActivity: AppCompatActivity() {
                 create()
             }
             builder.show()
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+
         }
     }
 }
