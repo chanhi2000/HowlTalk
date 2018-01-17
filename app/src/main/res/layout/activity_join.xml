@@ -8,6 +8,11 @@
         android:layout_height="match_parent"
         tools:context="com.example.markiiimark.howltalk.JoinActivity">
 
+    <ImageView android:id="@+id/profileImageView"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:src="@drawable/ic_add_a_photo_black"
+               android:onClick="profileImageViewClicked"/>
     <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                                                    android:layout_height="wrap_content">
         <EditText android:id="@+id/emailEditText"

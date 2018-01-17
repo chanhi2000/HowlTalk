@@ -12,7 +12,8 @@ This app is a step-by-step tutorial based app from a programmer who goes by the 
  - SplashActivity Created
  - LoginActivity Created
  - JoinActivity Created
- 
+ - JoinActivity Changed so that profile image can be added on registration
+  
 [hl01]: https://www.youtube.com/channel/UCScI4bsr-RaGdYSC2QAHWug/videos 
 [hl02]: https://www.github.com/you6878
 [hl03]: https://cafe.naver.com/howlcode

@@ -33,6 +33,7 @@ dependencies {
     compile "com.google.firebase:firebase-auth:${versions.gcm}"
     compile "com.google.firebase:firebase-database:${versions.gcm}"
     compile "com.google.firebase:firebase-config:${versions.gcm}"
+    compile "com.google.firebase:firebase-storage:${versions.gcm}"
     testCompile "junit:junit:${versions.junit}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

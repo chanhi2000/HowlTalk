@@ -1,3 +1,4 @@
 package com.example.markiiimark.howltalk.model
 
-data class UserModel(var userName:String)
+data class UserModel(val userName:String,
+                     val profileImageUrl:String)
