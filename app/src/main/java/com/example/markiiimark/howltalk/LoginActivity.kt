@@ -10,6 +10,12 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 
 class LoginActivity : AppCompatActivity() {
@@ -17,17 +23,35 @@ class LoginActivity : AppCompatActivity() {
         val TAG = "LoginActivity"
     }
 
+    private val idEditText by lazy {  findViewById(R.id.idEditText) as EditText  }
+    private val pwEditText by lazy {  findViewById(R.id.pwEditText) as EditText  }
     private val loginButton by lazy {  findViewById(R.id.loginButton) as Button  }
     private val joinButton by lazy {  findViewById(R.id.joinButton) as Button  }
+
     private val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+    private val mFirebaseAuth = FirebaseAuth.getInstance()
+    private val mFirebaseAuthListener: FirebaseAuth.AuthStateListener
+
+    init {
+        mFirebaseAuthListener = FirebaseAuth.AuthStateListener { auth:FirebaseAuth ->
+            val user = mFirebaseAuth.currentUser
+            if (user != null) {
+                // Login Success
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            } else {
+                // Login Failed
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // remove status bar
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
         setContentView(R.layout.activity_login)
         setActivityLayout()
+        mFirebaseAuth.signOut()
     }
 
     private fun setActivityLayout() {
@@ -44,5 +68,28 @@ class LoginActivity : AppCompatActivity() {
     fun joinButtonClicked(v:View) {
         Log.d(TAG, "joinButtonClicked")
         startActivity(Intent(this@LoginActivity, JoinActivity::class.java))
+    }
+
+    fun loginClicked(v:View) {
+        val id = idEditText.text.toString()
+        val pw = pwEditText.text.toString()
+        mFirebaseAuth.signInWithEmailAndPassword(id, pw)
+                .addOnCompleteListener { task: Task<AuthResult> ->
+                    if(!task.isSuccessful) {
+                        // login failed
+                        Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mFirebaseAuth.removeAuthStateListener(mFirebaseAuthListener)
     }
 }
