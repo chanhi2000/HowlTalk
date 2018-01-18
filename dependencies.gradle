@@ -17,8 +17,13 @@ ext {
             googleService   : '3.1.0',
             gcm             : '11.0.4',
 
+            // Etc
+            glide           : '4.0.0',      // the most stable version for this project
+
             // Testing
             junit           : '4.12',
             espresso        : '2.2.2'
+
+
     ]
 }

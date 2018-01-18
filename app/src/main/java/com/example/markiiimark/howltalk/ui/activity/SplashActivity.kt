@@ -1,4 +1,4 @@
-package com.example.markiiimark.howltalk
+package com.example.markiiimark.howltalk.ui.activity
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
 import android.widget.LinearLayout
+import com.example.markiiimark.howltalk.BuildConfig
+import com.example.markiiimark.howltalk.R
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 

@@ -1,4 +1,4 @@
-package com.example.markiiimark.howltalk
+package com.example.markiiimark.howltalk.ui.activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import com.example.markiiimark.howltalk.R
 import com.example.markiiimark.howltalk.model.UserModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

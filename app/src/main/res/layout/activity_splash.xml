@@ -5,7 +5,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.markiiimark.howltalk.SplashActivity">
+        tools:context="com.example.markiiimark.howltalk.ui.activity.SplashActivity">
 
     <ImageView
             android:src="@drawable/icon"

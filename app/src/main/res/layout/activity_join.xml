@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.markiiimark.howltalk.JoinActivity">
+        tools:context="com.example.markiiimark.howltalk.ui.activity.JoinActivity">
 
     <ImageView android:id="@+id/profileImageView"
                android:layout_width="100dp"
