@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item_people"
+          android:icon="@drawable/ic_people_black"
+          android:title="People"/>
+
+    <item android:id="@+id/item_chat"
+          android:icon="@drawable/ic_chat_black"
+          android:title="Chat"/>
+
+    <item android:id="@+id/item_account"
+          android:icon="@drawable/ic_account_circle_black"
+          android:title="Account"/>
+</menu>
