@@ -22,10 +22,10 @@ class LoginActivity : AppCompatActivity() {
         val TAG = "LoginActivity"
     }
 
-    private val idEditText by lazy {  findViewById(R.id.idEditText) as EditText  }
-    private val pwEditText by lazy {  findViewById(R.id.pwEditText) as EditText  }
-    private val loginButton by lazy {  findViewById(R.id.loginButton) as Button  }
-    private val joinButton by lazy {  findViewById(R.id.joinButton) as Button  }
+    private val idEditText by lazy {  findViewById<EditText>(R.id.idEditText)  }
+    private val pwEditText by lazy {  findViewById<EditText>(R.id.pwEditText)  }
+    private val loginButton by lazy {  findViewById<Button>(R.id.loginButton)  }
+    private val joinButton by lazy {  findViewById<Button>(R.id.joinButton)  }
 
     private val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
     private val mFirebaseAuth = FirebaseAuth.getInstance()

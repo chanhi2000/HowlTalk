@@ -1,6 +1,8 @@
 package com.example.markiiimark.howltalk.ui.fragment
 
+import android.app.ActivityOptions
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.constraint.solver.widgets.Snapshot
 import android.support.v7.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.markiiimark.howltalk.R
 import com.example.markiiimark.howltalk.model.UserModel
+import com.example.markiiimark.howltalk.ui.activity.MessageActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,7 +27,7 @@ class PeopleFragment: Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         val retView = inflater.inflate(R.layout.fragment_people, container, false)
-        val recView = retView.findViewById(R.id.peopleFragRecView) as RecyclerView
+        val recView = retView.findViewById<RecyclerView>(R.id.peopleFragRecView)
         recView.apply {
             layoutManager = LinearLayoutManager(inflater.context)
             adapter = PeopleFragmentRecyclerViewAdapter()
@@ -68,7 +71,15 @@ class PeopleFragment: Fragment() {
                     .apply(RequestOptions().circleCrop())
                     .into(mHolder.imageView)
             mHolder.textView.text = user.userName
+            mHolder.itemView.setOnClickListener {
+                val intent = Intent(view.context, MessageActivity::class.java)
+                val activityOption: ActivityOptions?
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    activityOption = ActivityOptions.makeCustomAnimation(view.context, R.anim.from_right, R.anim.to_left)
+                    startActivity(intent, activityOption.toBundle())
+                }
 
+            }
         }
 
         override fun getItemCount(): Int = userModels.size

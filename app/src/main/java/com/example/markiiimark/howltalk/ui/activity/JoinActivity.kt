@@ -50,7 +50,10 @@ class JoinActivity() : AppCompatActivity() {
         val email = emailEditText.text.toString()
         val pw = pwEditText.text.toString()
 
-        if (name.isEmpty() || email.isEmpty() || pw.isEmpty() || imageUri == null) {  return  }
+        if (name.isEmpty() ||
+                email.isEmpty() ||
+                pw.isEmpty() ||
+                imageUri == null) {  return  }
         registerUserToDatabase(email, pw, name, imageUri)
     }
 
@@ -69,7 +72,9 @@ class JoinActivity() : AppCompatActivity() {
                                 val imageUrl:String = task2.result.downloadUrl.toString()
                                 val userModel = UserModel(name, imageUrl)
                                 FirebaseDatabase.getInstance().reference
-                                        .child("users").child(uid).setValue(userModel)
+                                        .child("users").child(uid).setValue(userModel).addOnCompleteListener {
+                                    this@JoinActivity.finish()
+                                }
                     }
                 }
     }
