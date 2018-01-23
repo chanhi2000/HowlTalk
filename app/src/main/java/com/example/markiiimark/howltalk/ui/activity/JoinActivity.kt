@@ -70,7 +70,11 @@ class JoinActivity() : AppCompatActivity() {
                             .putFile(uri!!)
                             .addOnCompleteListener { task2: Task<UploadTask.TaskSnapshot> ->
                                 val imageUrl:String = task2.result.downloadUrl.toString()
-                                val userModel = UserModel(name, imageUrl)
+                                val userModel = UserModel(
+                                        name,
+                                        imageUrl,
+                                        FirebaseAuth.getInstance().currentUser?.uid
+                                )
                                 FirebaseDatabase.getInstance().reference
                                         .child("users").child(uid).setValue(userModel).addOnCompleteListener {
                                     this@JoinActivity.finish()

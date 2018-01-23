@@ -72,7 +72,9 @@ class PeopleFragment: Fragment() {
                     .into(mHolder.imageView)
             mHolder.textView.text = user.userName
             mHolder.itemView.setOnClickListener {
-                val intent = Intent(view.context, MessageActivity::class.java)
+                val intent = Intent(view.context, MessageActivity::class.java).apply {
+                    putExtra("destinationUid", user.uid)
+                }
                 val activityOption: ActivityOptions?
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     activityOption = ActivityOptions.makeCustomAnimation(view.context, R.anim.from_right, R.anim.to_left)
