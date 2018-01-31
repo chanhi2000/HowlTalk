@@ -9,15 +9,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView android:id="@+id/friendItemImageView"
-                   android:layout_width="50dp"
-                   android:layout_height="50dp"
-                   android:layout_margin="10dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"/>
         <TextView android:id="@+id/friendItemTextView"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="id aaaa"
-                  android:layout_gravity="center_vertical"
-                  android:layout_marginLeft="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="id aaaa"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
     <LinearLayout

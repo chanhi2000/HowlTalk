@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -24,6 +25,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile("com.android.support.test.espresso:espresso-core:${versions.espresso}",
             { exclude group: 'com.android.support', module: 'support-annotations' })
+    compile "com.android.support:support-v4:${versions.support}"
     compile "com.android.support:appcompat-v7:${versions.support}"
     compile "com.android.support:design:${versions.support}"
     compile "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"

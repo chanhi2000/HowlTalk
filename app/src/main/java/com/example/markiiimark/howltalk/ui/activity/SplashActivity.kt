@@ -16,7 +16,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 class SplashActivity: AppCompatActivity() {
 
     private val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
-    private val splashLayout by lazy {  findViewById(R.id.SplashLayout) as LinearLayout  }
+    private val splashLayout by lazy {  findViewById<LinearLayout>(R.id.SplashLayout)  }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

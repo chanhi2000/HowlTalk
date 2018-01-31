@@ -73,7 +73,7 @@ class JoinActivity() : AppCompatActivity() {
                                 val userModel = UserModel(
                                         name,
                                         imageUrl,
-                                        FirebaseAuth.getInstance().currentUser?.uid
+                                        FirebaseAuth.getInstance().currentUser!!.uid
                                 )
                                 FirebaseDatabase.getInstance().reference
                                         .child("users").child(uid).setValue(userModel).addOnCompleteListener {

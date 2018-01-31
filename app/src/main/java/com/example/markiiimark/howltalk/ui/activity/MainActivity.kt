@@ -3,6 +3,7 @@ package com.example.markiiimark.howltalk.ui.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.markiiimark.howltalk.R
+import com.example.markiiimark.howltalk.extension.replaceFragment
 import com.example.markiiimark.howltalk.ui.fragment.PeopleFragment
 
 class MainActivity : AppCompatActivity() {
@@ -11,6 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragmentManager.beginTransaction().replace(R.id.mainFrameLayout, PeopleFragment()).commit()
+        replaceFragment(PeopleFragment(), R.id.frameLayout)
     }
 }

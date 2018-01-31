@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.markiiimark.howltalk.R
+import com.example.markiiimark.howltalk.extension.toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -29,24 +30,19 @@ class LoginActivity : AppCompatActivity() {
 
     private val mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
     private val mFirebaseAuth = FirebaseAuth.getInstance()
-    private val mFirebaseAuthListener: FirebaseAuth.AuthStateListener
-
-    init {
-        mFirebaseAuthListener = FirebaseAuth.AuthStateListener { auth:FirebaseAuth ->
-            val user = mFirebaseAuth.currentUser
-            if (user != null) {
-                // Login Success
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
-            } else {
-                // Login Failed
-            }
+    private val mFirebaseAuthListener = FirebaseAuth.AuthStateListener { auth:FirebaseAuth ->
+        val user = mFirebaseAuth.currentUser
+        if (user != null) {
+            // Login Success
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
+        } else {
+            // Login Failed
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // remove status bar
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_login)
         setActivityLayout()
@@ -76,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener { task: Task<AuthResult> ->
                     if(!task.isSuccessful) {
                         // login failed
-                        Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                        task.exception!!.message!!.toast(this@LoginActivity)
                     }
                 }
     }
